@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}País: {{ country.name }}{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h1>{{ country.name }}</h1>
+    <p><strong>ID:</strong> {{ country.country_id }}</p>
+</div>
+
+<div class="card">
+    <h2>Conteúdos Disponíveis</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Tipo</th>
+                <th>Ano</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for content in contents %}
+            <tr>
+                <td><a class="link" href="/content/{{ content.show_id }}/">{{ content.title }}</a></td>
+                <td>{{ content.type }}</td>
+                <td>{{ content.release_year }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="card">
+    <a href="/country/" class="btn">← Voltar à Lista de Países</a>
+</div>
+{% endblock %}

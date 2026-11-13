@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Lista de Países{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h1>Lista de Países</h1>
+    <p>Total: {{ countries|length }} países</p>
+</div>
+
+<div class="card">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Nº de Conteúdos</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for country in countries %}
+            <tr>
+                <td>{{ country.country_id }}</td>
+                <td><a class="link" href="/country/{{ country.country_id }}/">{{ country.name }}</a></td>
+                <td>{{ country.content_count }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

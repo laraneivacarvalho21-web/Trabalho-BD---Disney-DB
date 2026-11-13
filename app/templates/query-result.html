@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Query {{ query_number }} - {{ title }}{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h1>Query {{ query_number }}: {{ title }}</h1>
+    <p style="color: #aaa; font-size: 1.1rem;">{{ subtitle }}</p>
+</div>
+
+<div class="card">
+    <h3>Resultados ({{ results|length }} linhas)</h3>
+    <table>
+        <thead>
+            <tr>
+                {% for col in columns %}
+                <th>{{ col }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% if results %}
+                {% for row in results %}
+                <tr>
+                    {% for value in row %}
+                    <td>{{ value }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="{{ columns|length }}" style="text-align: center; color: #aaa;">
+                        Nenhum resultado encontrado
+                    </td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+
+<div class="card">
+    <h3>Código SQL</h3>
+    <pre style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 8px; overflow-x: auto; color: #4FC3F7;">{{ sql_code }}</pre>
+</div>
+
+<div class="card">
+    <a href="/" class="btn">← Voltar ao Início</a>
+</div>
+{% endblock %}

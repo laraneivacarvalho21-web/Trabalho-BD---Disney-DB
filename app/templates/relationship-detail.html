@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <h1>{{ title }}</h1>
+    <p>Este registo representa uma ligação na base de dados.</p>
+    
+    <div class="stat-grid">
+        <div class="stat-card">
+            <div class="stat-label">Conteúdo</div>
+            <div class="stat-number">{{ data.title }}</div>
+            <a href="/content/{{ data.show_id }}/" class="btn" style="margin-top:10px; font-size: 0.8rem;">Ver Conteúdo</a>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-label">
+                {% if type == 'belongs_to' %} Género
+                {% elif type == 'produced_in' %} País
+                {% else %} Participante
+                {% endif %}
+            </div>
+            <div class="stat-number">{{ data.name }}</div>
+        </div>
+    </div>
+    
+    <div style="margin-top: 20px;">
+        <a href="/{{ type }}/" class="link">⬅ Voltar à tabela {{ type }}</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Participante: {{ participant.name }}{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h1>{{ participant.name }}</h1>
+    <p><strong>ID:</strong> {{ participant.participant_id }}</p>
+</div>
+
+{% if actor_contents %}
+<div class="card">
+    <h2>Obras como Ator</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Tipo</th>
+                <th>Ano</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for content in actor_contents %}
+            <tr>
+                <td><a class="link" href="/content/{{ content.show_id }}/">{{ content.title }}</a></td>
+                <td>{{ content.type }}</td>
+                <td>{{ content.release_year }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+
+{% if director_contents %}
+<div class="card">
+    <h2>Obras como Diretor</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Tipo</th>
+                <th>Ano</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for content in director_contents %}
+            <tr>
+                <td><a class="link" href="/content/{{ content.show_id }}/">{{ content.title }}</a></td>
+                <td>{{ content.type }}</td>
+                <td>{{ content.release_year }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+
+<div class="card">
+    <a href="/participant/" class="btn">← Voltar à Lista de Participantes</a>
+</div>
+{% endblock %}

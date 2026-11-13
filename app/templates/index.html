@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+
+{% block title %}Disney+ Database - Início{% endblock %}
+
+{% block content %}
+
+<div class="card">
+    <h2>Estatísticas Gerais</h2>
+    <div class="stat-grid">
+        <div class="stat-card">
+            <div class="stat-number">{{ stats['total_content'] }}</div>
+            <div class="stat-label">Total de Conteúdos</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">{{ stats['total_movies'] }}</div>
+            <div class="stat-label">Filmes</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">{{ stats['total_shows'] }}</div>
+            <div class="stat-label">Séries TV</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">{{ stats['total_participants'] }}</div>
+            <div class="stat-label">Participantes</div> <!-- MODIFICADO -->
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">{{ stats['total_directors'] }}</div>
+            <div class="stat-label">Diretores</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">{{ stats['total_actors'] }}</div>
+            <div class="stat-label">Atores</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">{{ stats['total_countries'] }}</div>
+            <div class="stat-label">Países</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">{{ stats['total_genres'] }}</div>
+            <div class="stat-label">Géneros</div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <h2>Navegar por Tabelas</h2>
+    <table>
+        <tr>
+            <td><a class="link" href="/content/">🎬 Conteúdos</a></td>
+            <td>Tabela Mestra (Filmes e Séries)</td>
+        </tr>
+        <tr>
+            <td><a class="link" href="/participant/">👥 Participantes</a></td>
+            <td>Atores e Realizadores</td>
+        </tr>
+        <tr>
+            <td><a class="link" href="/country/">🌍 Países</a></td>
+            <td>Países Produtores</td>
+        </tr>
+        <tr>
+            <td><a class="link" href="/genre/">🎪 Géneros</a></td>
+            <td>Categorias</td>
+        </tr>
+        
+        <tr style="border-top: 2px solid #444;">
+            <td><a class="link" href="/acts_in/">🎭 Atua Em (Acts_In)</a></td>
+            <td>Relação: Quem atuou em quê</td>
+        </tr>
+        <tr>
+            <td><a class="link" href="/directs/">🎬 Realiza (Directs)</a></td>
+            <td>Relação: Quem realizou o quê</td>
+        </tr>
+        <tr>
+            <td><a class="link" href="/produced_in/">🏳️ Produzido Em (Produced_In)</a></td>
+            <td>Relação: Conteúdo vs País</td>
+        </tr>
+        <tr>
+            <td><a class="link" href="/belongs_to/">🏷️ Pertence A (Belongs_To)</a></td>
+            <td>Relação: Conteúdo vs Género</td>
+        </tr>
+    </table>
+</div>
+
+
+<div class="card">
+    <h2>Navegar por Tabelas</h2>
+    <table>
+        <tr>
+            <td><a class="link" href="/content/">🎬 Conteúdos</a></td>
+            <td>Lista de todos os filmes e séries</td>
+        </tr>
+        <tr>
+            <td><a class="link" href="/participant/">👥 Participantes</a></td> <!-- MODIFICADO -->
+            <td>Lista de todos os participantes (atores e diretores)</td>
+        </tr>
+        <tr>
+            <td><a class="link" href="/country/">🌍 Países</a></td>
+            <td>Lista de todos os países produtores</td>
+        </tr>
+        <tr>
+            <td><a class="link" href="/genre/">🎪 Géneros</a></td>
+            <td>Lista de todos os géneros</td>
+        </tr>
+    </table>
+</div>
+
+<div class="card">
+    <h2>Interrogações SQL</h2>
+    <table>
+        <tr>
+            <td><a class="link" href="/queries/1">Query 1</a></td>
+            <td>Distribuição Geográfica - Top 5 países</td>
+        </tr>
+        <tr>
+            <td><a class="link" href="/queries/2">Query 2</a></td>
+            <td>Versatilidade dos Atores - Múltiplos géneros</td>
+        </tr>
+        <tr>
+            <td><a class="link" href="/queries/3">Query 3</a></td>
+            <td>Produtividade dos Realizadores - Mais de 5 obras</td>
+        </tr>
+        <tr>
+            <td><a class="link" href="/queries/4">Query 4</a></td>
+            <td>Colaborações Recorrentes - Duplas Diretor-Ator</td>
+        </tr>
+        <tr>
+            <td><a class="link" href="/queries/5">Query 5</a></td>
+            <td>Filme Mais Longo por Género</td>
+        </tr>
+        <tr>
+            <td><a class="link" href="/queries/6">Query 6</a></td>
+            <td>Ano com Mais Séries lançadas</td>
+        </tr>
+        <tr>
+            <td><a class="link" href="/queries/7">Query 7</a></td>
+            <td>Atores sem Comédia</td>
+        </tr>
+        <tr>
+            <td><a class="link" href="/queries/8">Query 8</a></td>
+            <td>Tamanho do Elenco por Género</td>
+        </tr>
+        <tr>
+            <td><a class="link" href="/queries/9">Query 9</a></td>
+            <td>Género Dominante por País</td>
+        </tr>
+        <tr>
+            <td><a class="link" href="/queries/10">Query 10</a></td>
+            <td>Participantes Multifacetados</td>
+        </tr>
+        <tr>
+            <td><a class="link" href="/queries/11">Query 11</a></td>
+            <td>Média de Duração por Género de Filme vs Geral</td>
+        </tr>
+        <tr>
+            <td><a class="link" href="/queries/12">Query 12</a></td>
+            <td>Controlo Total</td>
+        </tr>
+    </table>
+</div>
+{% endblock %}

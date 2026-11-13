@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Género: {{ genre.name }}{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h1>{{ genre.name }}</h1>
+    <p><strong>ID:</strong> {{ genre.genre_id }}</p>
+</div>
+
+<div class="card">
+    <h2>🎬 Conteúdos deste Género</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Tipo</th>
+                <th>Ano</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for content in contents %}
+            <tr>
+                <td><a class="link" href="/content/{{ content.show_id }}/">{{ content.title }}</a></td>
+                <td>{{ content.type }}</td>
+                <td>{{ content.release_year }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="card">
+    <a href="/genre/" class="btn">← Voltar à Lista de Géneros</a>
+</div>
+{% endblock %}

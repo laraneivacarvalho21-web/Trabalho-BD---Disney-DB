@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <h1>{{ title }}</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Conteúdo</th>
+                <th>Associado a</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr>
+                <td>{{ item.title }} <small>({{ item.show_id }})</small></td>
+                
+                <td>{{ item.name }}</td>
+
+                <td>
+                    {% if type == 'acts_in' %}
+                        <a class="link" href="/acts_in/{{ item.show_id }}/{{ item.participant_id }}/">Ver Registo</a>
+                    {% elif type == 'belongs_to' %}
+                        <a class="link" href="/belongs_to/{{ item.show_id }}/{{ item.genre_id }}/">Ver Registo</a>
+                    {% elif type == 'directs' %}
+                        <a class="link" href="/directs/{{ item.show_id }}/{{ item.participant_id }}/">Ver Registo</a>
+                    {% elif type == 'produced_in' %}
+                        <a class="link" href="/produced_in/{{ item.show_id }}/{{ item.country_id }}/">Ver Registo</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

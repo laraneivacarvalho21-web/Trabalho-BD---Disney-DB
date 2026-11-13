@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Lista de Participantes{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h1>Lista de Participantes</h1>
+    <p>Total: {{ participants|length }} participantes</p>
+</div>
+
+<div class="card">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Obras como Ator</th>
+                <th>Obras como Diretor</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for participant in participants %}
+            <tr>
+                <td>{{ participant.participant_id }}</td>
+                <td><a class="link" href="/participant/{{ participant.participant_id }}/">{{ participant.name }}</a></td>
+                <td>{{ participant.actor_count }}</td>
+                <td>{{ participant.director_count }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

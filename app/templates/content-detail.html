@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}{{ content.title }}{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h1>{{ content.title }}</h1>
+    <p><strong>Tipo:</strong> {{ content.type }} | <strong>Ano:</strong> {{ content.release_year }} | <strong>Classificação:</strong> {{ content.rating or 'N/A' }}</p>
+    {% if content.duration %}
+    <p><strong>Duração:</strong> 
+        {{ content.duration }}
+        {% if content.type == 'Movie' %}
+            min
+        {% else %}
+            temporada{% if content.duration > 1 %}s{% endif %}
+        {% endif %}
+    </p>
+    {% endif %}
+    {% if content.description %}
+    <p><strong>Descrição:</strong> {{ content.description }}</p>
+    {% endif %}
+</div>
+
+<div class="card">
+    <h2>Diretores</h2>
+    {% if directors %}
+        <ul>
+            {% for director in directors %}
+            <li>{{ director.name }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nenhum diretor encontrado.</p>
+    {% endif %}
+</div>
+
+<div class="card">
+    <h2>Atores</h2>
+    {% if actors %}
+        <ul>
+            {% for actor in actors %}
+            <li>{{ actor.name }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nenhum ator encontrado.</p>
+    {% endif %}
+</div>
+
+<div class="card">
+    <h2>Países</h2>
+    {% if countries %}
+        <ul>
+            {% for country in countries %}
+            <li>{{ country.name }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nenhum país encontrado.</p>
+    {% endif %}
+</div>
+
+<div class="card">
+    <h2>Géneros</h2>
+    {% if genres %}
+        <ul>
+            {% for genre in genres %}
+            <li>{{ genre.name }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nenhum género encontrado.</p>
+    {% endif %}
+</div>
+
+<div class="card">
+    <a href="/content/" class="btn">← Voltar à Lista de Conteúdos</a>
+</div>
+{% endblock %}
